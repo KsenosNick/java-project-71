@@ -1,8 +1,8 @@
 install:
 	make -C app install
 
-run-dist:
-	make -C app run-dist
+run:
+	make -C app run
 
 build:
 	make -C app build
