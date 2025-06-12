@@ -2,7 +2,7 @@ install:
 	gradle clean
 	gradle installDist
 
-run:
+run-dist:
 	./build/install/app/bin/app
 
 build:
@@ -16,5 +16,6 @@ report:
 
 lint:
 	./gradlew checkstyleMain
+	./gradlew checkstyleTest
 
 .PHONY: build
