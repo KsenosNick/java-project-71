@@ -2,6 +2,7 @@ plugins {
     id("java")
     id("se.patrikerdes.use-latest-versions") version "0.2.18"
     id("com.github.ben-manes.versions") version "0.41.0"
+    id("org.sonarqube") version "6.2.0.5505"
     application
     jacoco
     checkstyle
@@ -39,5 +40,13 @@ tasks.test {
 tasks.jacocoTestReport {
     reports {
         xml.required = true
+    }
+}
+
+sonar {
+    properties {
+        property("sonar.projectKey", "KsenosNick_java-project-71")
+        property("sonar.organization", "ksenosnick")
+        property("sonar.host.url", "https://sonarcloud.io")
     }
 }
