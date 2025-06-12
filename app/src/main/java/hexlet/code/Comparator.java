@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 public class Comparator {
 
-    public static List<Map<String, Object>>  compare(Map<String, Object> data1, Map<String, Object> data2) {
+    public static List<Map<String, Object>> compare(Map<String, Object> data1, Map<String, Object> data2) {
         Set<String> keys = new TreeSet<>(data1.keySet());
         keys.addAll(data2.keySet());
         List<Map<String, Object>> result = new ArrayList<>();
@@ -20,6 +20,7 @@ public class Comparator {
             Object value1 = data1.get(key);
             Object value2 = data2.get(key);
             dataDifference.put("key", key);
+
             if (Objects.isNull(value1)) {
                 dataDifference.put("value2", value2);
                 dataDifference.put("status", Status.ADDED);
@@ -37,8 +38,6 @@ public class Comparator {
 
             result.add(dataDifference);
         }
-
-
 
         return result;
     }
