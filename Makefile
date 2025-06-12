@@ -1,19 +1,17 @@
-install:
-	make -C app install
-
-run:
-	make -C app run
+default:
+	@echo "Use targets: build, test, report, lint, run"
 
 build:
-	make -C app build
-
-report:
-	make -C app report
+	$(MAKE) -C app build
 
 test:
-	make -C app test
+	$(MAKE) -C app test
+
+report:
+	$(MAKE) -C app report
 
 lint:
-	make -C app lint
+	$(MAKE) -C app lint
 
-.PHONY: build
+run:
+	$(MAKE) -C app run-dist
