@@ -21,10 +21,10 @@ public class Comparator {
             Object value2 = data2.get(key);
             dataDifference.put("key", key);
 
-            if (Objects.isNull(value1)) {
+            if (!data1.containsKey(key)) {
                 dataDifference.put("value2", value2);
                 dataDifference.put("status", Status.ADDED);
-            } else if (Objects.isNull(value2)) {
+            } else if (!data2.containsKey(key)) {
                 dataDifference.put("value1", value1);
                 dataDifference.put("status", Status.REMOVED);
             } else if (Objects.equals(value1, value2)) {
