@@ -15,3 +15,6 @@ lint:
 
 run:
 	$(MAKE) -C app run-dist
+
+install:
+	$(MAKE) -C app install

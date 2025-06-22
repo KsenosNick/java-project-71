@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import static hexlet.code.Comparator.compare;
-import static hexlet.code.Formater.format;
+import static hexlet.code.Formatter.format;
 import static hexlet.code.Parser.parse;
 import static hexlet.code.Reader.read;
 import org.apache.commons.io.FilenameUtils;
