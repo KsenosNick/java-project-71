@@ -24,11 +24,7 @@ public class Differ {
 
             List<Map<String, Object>> difference = compare(data1, data2);
 
-            String result = format(difference, format);
-
-            System.out.println(result);
-
-            return result;
+            return format(difference, format);
         } catch (IllegalArgumentException exception) {
             throw new RuntimeException(exception);
         }
