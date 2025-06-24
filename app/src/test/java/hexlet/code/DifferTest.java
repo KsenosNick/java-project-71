@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class DifferTest {
     private static String expectedResultStylish;
     private static String expectedResultPlain;
+    private static String expectedResultJson;
 
     public static Path getPath(String fileName) {
         return Paths.get("./src/test/resources/input/" + fileName).toAbsolutePath().normalize();
@@ -27,6 +28,7 @@ class DifferTest {
     public static void setup() throws IOException {
         expectedResultStylish = read("./src/test/resources/expected/stylish.txt");
         expectedResultPlain = read("./src/test/resources/expected/plain.txt");
+        expectedResultJson = read("./src/test/resources/expected/json.txt");
     }
 
     @ParameterizedTest
@@ -57,6 +59,21 @@ class DifferTest {
         String actualResult = Differ.generate(filePath1, filePath2, format);
 
         assertEquals(expectedResultPlain, actualResult);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"yml", "json"})
+    void testGenerateJson(String inputFormat) throws IOException {
+        String file1Name = "file1." + inputFormat;
+        String file2Name = "file2." + inputFormat;
+
+        String filePath1 = getPath(file1Name).toString();
+        String filePath2 = getPath(file2Name).toString();
+        String format = "json";
+
+        String actualResult = Differ.generate(filePath1, filePath2, format);
+
+        assertEquals(expectedResultJson, actualResult);
     }
 
     @Test
