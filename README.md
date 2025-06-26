@@ -3,4 +3,6 @@
 
 [![SonarQube Cloud](https://sonarcloud.io/images/project_badges/sonarcloud-light.svg)](https://sonarcloud.io/summary/new_code?id=KsenosNick_java-project-71)
 
-[![asciicast](https://asciinema.org/a/4tvCUWCQHzaCfN499wJaOytj8.svg)](https://asciinema.org/a/4tvCUWCQHzaCfN499wJaOytj8)
+
+
+[![asciicast](https://asciinema.org/a/upYcFsfwpWmNElydQCjDm90om.svg)](https://asciinema.org/a/upYcFsfwpWmNElydQCjDm90om)
