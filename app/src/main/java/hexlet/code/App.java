@@ -5,7 +5,6 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
-import java.io.IOException;
 import java.util.concurrent.Callable;
 
 @Command(name = "app", mixinStandardHelpOptions = true, version = "1.0",
@@ -33,7 +32,7 @@ public class App implements Callable<Integer> {
 
     @Override
     public Integer call() {
-        String difference = null;
+        String difference;
         try {
             difference = Differ.generate(filePath1, filePath2, format);
         } catch (Exception e) {
