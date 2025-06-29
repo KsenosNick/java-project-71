@@ -11,8 +11,7 @@ import static hexlet.code.Reader.read;
 import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
-    public static String generate(String filePath1, String filePath2, String format) throws IOException {
-        try {
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
             String file1Format = FilenameUtils.getExtension(filePath1).toLowerCase();
             String file2Format = FilenameUtils.getExtension(filePath2).toLowerCase();
 
@@ -25,9 +24,6 @@ public class Differ {
             List<Map<String, Object>> difference = compare(data1, data2);
 
             return format(difference, format);
-        } catch (IllegalArgumentException exception) {
-            throw new RuntimeException(exception);
-        }
-
     }
+
 }
