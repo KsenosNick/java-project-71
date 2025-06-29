@@ -11,18 +11,18 @@ import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
-            String file1Format = FilenameUtils.getExtension(filePath1).toLowerCase();
-            String file2Format = FilenameUtils.getExtension(filePath2).toLowerCase();
+        String file1Format = FilenameUtils.getExtension(filePath1).toLowerCase();
+        String file2Format = FilenameUtils.getExtension(filePath2).toLowerCase();
 
-            String fileContent1 = read(filePath1);
-            String fileContent2 = read(filePath2);
+        String fileContent1 = read(filePath1);
+        String fileContent2 = read(filePath2);
 
-            Map<String, Object> data1 = parse(fileContent1, file1Format);
-            Map<String, Object> data2 = parse(fileContent2, file2Format);
+        Map<String, Object> data1 = parse(fileContent1, file1Format);
+        Map<String, Object> data2 = parse(fileContent2, file2Format);
 
-            List<Map<String, Object>> difference = compare(data1, data2);
+        List<Map<String, Object>> difference = compare(data1, data2);
 
-            return format(difference, format);
+        return format(difference, format);
     }
 
 }
