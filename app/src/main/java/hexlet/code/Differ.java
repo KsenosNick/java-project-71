@@ -7,12 +7,11 @@ import static hexlet.code.Comparator.compare;
 import static hexlet.code.Formatter.format;
 import static hexlet.code.Parser.parse;
 import static hexlet.code.Reader.read;
-import org.apache.commons.io.FilenameUtils;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
-        String file1Format = FilenameUtils.getExtension(filePath1).toLowerCase();
-        String file2Format = FilenameUtils.getExtension(filePath2).toLowerCase();
+        String file1Format = getDataFormat(filePath1);
+        String file2Format = getDataFormat(filePath2);
 
         String fileContent1 = read(filePath1);
         String fileContent2 = read(filePath2);
@@ -23,6 +22,13 @@ public class Differ {
         List<Map<String, Object>> difference = compare(data1, data2);
 
         return format(difference, format);
+    }
+
+    private static String getDataFormat(String filePath) {
+        int index = filePath.lastIndexOf('.');
+        return index > 0
+                ? filePath.substring(index + 1)
+                : "";
     }
 
 }
