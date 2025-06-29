@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.IOException;
-
 import static hexlet.code.Reader.read;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import java.nio.file.Path;
@@ -25,7 +23,7 @@ class DifferTest {
     }
 
     @BeforeAll
-    public static void setup() throws IOException {
+    public static void setup() throws Exception {
         expectedResultStylish = read("./src/test/resources/expected/stylish.txt");
         expectedResultPlain = read("./src/test/resources/expected/plain.txt");
         expectedResultJson = read("./src/test/resources/expected/json.txt");
@@ -33,7 +31,7 @@ class DifferTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"yml", "json"})
-    void testGenerateStylish(String inputFormat) throws IOException {
+    void testGenerateDefault(String inputFormat) throws Exception {
         String file1Name = "file1." + inputFormat;
         String file2Name = "file2." + inputFormat;
 
@@ -48,7 +46,22 @@ class DifferTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"yml", "json"})
-    void testGeneratePlain(String inputFormat) throws IOException {
+    void testGenerateStylish(String inputFormat) throws Exception {
+        String file1Name = "file1." + inputFormat;
+        String file2Name = "file2." + inputFormat;
+
+        String filePath1 = getPath(file1Name).toString();
+        String filePath2 = getPath(file2Name).toString();
+        String format = "stylish";
+
+        String actualResult = Differ.generate(filePath1, filePath2, format);
+
+        assertEquals(expectedResultStylish, actualResult);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"yml", "json"})
+    void testGeneratePlain(String inputFormat) throws Exception {
         String file1Name = "file1." + inputFormat;
         String file2Name = "file2." + inputFormat;
 
@@ -63,7 +76,7 @@ class DifferTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"yml", "json"})
-    void testGenerateJson(String inputFormat) throws IOException {
+    void testGenerateJson(String inputFormat) throws Exception {
         String file1Name = "file1." + inputFormat;
         String file2Name = "file2." + inputFormat;
 
