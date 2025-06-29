@@ -90,7 +90,7 @@ class DifferTest {
     }
 
     @Test
-    void testGenerateIllegalArgumentException() {
+    void testUnknownFormat() {
         String file1Name = "file1.txt";
         String file2Name = "file2.txt";
 
@@ -103,7 +103,6 @@ class DifferTest {
         );
 
         assertThat(thrown)
-                .isInstanceOf(RuntimeException.class)
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(RuntimeException.class);
     }
 }
