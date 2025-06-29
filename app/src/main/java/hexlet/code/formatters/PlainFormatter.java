@@ -54,10 +54,10 @@ public class PlainFormatter {
             return "null";
         } else if (isString(obj)) {
             return "'" + obj + "'";
-        } else if (isSimpleType(obj)) {
-            return obj.toString();
-        } else {
+        } else if (isComplexType(obj)) {
             return "[complex value]";
+        } else {
+            return obj.toString();
         }
     }
 
@@ -65,14 +65,9 @@ public class PlainFormatter {
         return obj instanceof String;
     }
 
-    private static boolean isSimpleType(Object obj) {
-        return obj instanceof Integer
-                || obj instanceof Boolean
-                || obj instanceof Double
-                || obj instanceof Float
-                || obj instanceof Character
-                || obj instanceof Byte
-                || obj instanceof Short
-                || obj instanceof Long;
+    private static boolean isComplexType(Object obj) {
+        String str = obj.toString();
+        return str.startsWith("{") && str.endsWith("}")
+                || str.startsWith("[") && str.endsWith("]");
     }
 }
