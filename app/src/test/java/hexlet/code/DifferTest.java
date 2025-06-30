@@ -37,9 +37,8 @@ class DifferTest {
 
         String filePath1 = getPath(file1Name).toString();
         String filePath2 = getPath(file2Name).toString();
-        String format = "stylish";
 
-        String actualResult = Differ.generate(filePath1, filePath2, format);
+        String actualResult = Differ.generate(filePath1, filePath2);
 
         assertEquals(expectedResultStylish, actualResult);
     }
