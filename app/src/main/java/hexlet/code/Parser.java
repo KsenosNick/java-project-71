@@ -7,13 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 public class Parser {
-    public static <K, V> Map<K, V> parse(String content, String fileFormat) throws Exception {
-        if (fileFormat.equals("json")) {
+    public static <K, V> Map<K, V> parse(String content, String dataType) throws Exception {
+        if (dataType.equals("json")) {
             return parseJson(content);
-        } else if (fileFormat.equals("yml")) {
+        } else if (dataType.equals("yml")) {
             return parseYaml(content);
         } else {
-            throw new IllegalArgumentException("Unsupported file format: " + fileFormat);
+            throw new IllegalArgumentException("Unsupported file format: " + dataType);
         }
     }
 

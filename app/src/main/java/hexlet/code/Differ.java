@@ -9,15 +9,15 @@ import static hexlet.code.Parser.parse;
 import static hexlet.code.Reader.read;
 
 public class Differ {
-    public static String generate(String filePath1, String filePath2, String format) throws Exception {
-        String file1Format = getDataFormat(filePath1);
-        String file2Format = getDataFormat(filePath2);
+    public static String generate(String dataPath1, String dataPath2, String format) throws Exception {
+        String data1Format = getDataFormat(dataPath1);
+        String data2Format = getDataFormat(dataPath2);
 
-        String fileContent1 = read(filePath1);
-        String fileContent2 = read(filePath2);
+        String dataContent1 = read(dataPath1);
+        String dataContent2 = read(dataPath2);
 
-        Map<String, Object> data1 = parse(fileContent1, file1Format);
-        Map<String, Object> data2 = parse(fileContent2, file2Format);
+        Map<String, Object> data1 = parse(dataContent1, data1Format);
+        Map<String, Object> data2 = parse(dataContent2, data2Format);
 
         List<Map<String, Object>> difference = compare(data1, data2);
 
