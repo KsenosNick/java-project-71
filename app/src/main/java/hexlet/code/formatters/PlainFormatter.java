@@ -52,17 +52,13 @@ public class PlainFormatter {
     private static String formatValue(Object obj) {
         if (obj == null) {
             return "null";
-        } else if (isString(obj)) {
+        } else if (obj instanceof String) {
             return "'" + obj + "'";
         } else if (isComplexType(obj)) {
             return "[complex value]";
         } else {
             return obj.toString();
         }
-    }
-
-    private static boolean isString(Object obj) {
-        return obj instanceof String;
     }
 
     private static boolean isComplexType(Object obj) {
