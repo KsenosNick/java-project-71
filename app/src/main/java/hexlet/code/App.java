@@ -32,13 +32,13 @@ public final class App implements Callable<Integer> {
 
     @Override
     public Integer call() {
-        String difference;
         try {
-            difference = Differ.generate(filePath1, filePath2, format);
+            String difference = Differ.generate(filePath1, filePath2, format);
+            System.out.println(difference);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        System.out.println(difference);
+
         return 0;
     }
 }
