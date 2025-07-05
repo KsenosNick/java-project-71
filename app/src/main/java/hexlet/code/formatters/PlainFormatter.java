@@ -2,6 +2,7 @@ package hexlet.code.formatters;
 
 import hexlet.code.Status;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -54,16 +55,10 @@ public class PlainFormatter {
             return "null";
         } else if (obj instanceof String) {
             return "'" + obj + "'";
-        } else if (isComplexType(obj)) {
+        } else if (obj instanceof Collection<?> || obj instanceof Map<?, ?>) {
             return "[complex value]";
         } else {
             return obj.toString();
         }
-    }
-
-    private static boolean isComplexType(Object obj) {
-        String str = obj.toString();
-        return str.startsWith("{") && str.endsWith("}")
-                || str.startsWith("[") && str.endsWith("]");
     }
 }
