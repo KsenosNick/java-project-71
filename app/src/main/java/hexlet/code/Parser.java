@@ -8,12 +8,12 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 public class Parser {
     public static <K, V> Map<K, V> parse(String content, String dataType) throws Exception {
-        if (dataType.equals("json")) {
+        if (dataType.equalsIgnoreCase("json")) {
             return parseJson(content);
-        } else if (dataType.equals("yml")) {
+        } else if (dataType.equalsIgnoreCase("yml") || dataType.equalsIgnoreCase("yaml")) {
             return parseYaml(content);
         } else {
-            throw new IllegalArgumentException("Unsupported file format: " + dataType);
+            throw new IllegalArgumentException("Unsupported data format: " + dataType);
         }
     }
 
